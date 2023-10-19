@@ -27,8 +27,8 @@
 }
 
 .active_btn{
-    color:  #00d9ff;
-    border-bottom: 2px solid #00d9ff;
+    color:  #01C38D;
+    border-bottom: 2px solid #01C38D;
     padding-bottom: .4rem;
 }
 
@@ -43,7 +43,7 @@
     border: none;
     border-radius: .5rem;
     font-size: 1.1rem;
-    color: #00d9ff;
+    color: #01C38D;
     font-weight: 700;
     cursor: pointer;
 
@@ -67,7 +67,7 @@
 .modelBox{
     position: fixed;
     inset: 0 0 0 0;
-    background-color: #292F3F;
+    background-color: #191E29;
     z-index: 77777777;
 }
 
@@ -94,7 +94,7 @@
     .NavBar_box_right_menu{
         position: fixed;
         z-index: 111111;
-        background-color: #292F3F;
+        background-color: #191E29;
         width: 100%;
         flex-direction: column;
         height: 100vh;
@@ -107,7 +107,7 @@
         display: block;
         position: fixed;
         z-index: 1111111;
-        background-color: #292F3F;
+        background-color: #191E29;
         inset:  0 0 0 0;
        text-align: center;
        padding-top: 4rem;
@@ -124,6 +124,6 @@
         position: absolute;
         inset: 0 0 -70% 0%;
         z-index: 11111;
-        background-color: #292F3F;
+        background-color: #191E29;
     }
 }

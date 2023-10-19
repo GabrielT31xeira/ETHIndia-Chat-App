@@ -11,19 +11,23 @@ import images from '../../assets'
 const NavBar = () => {
   const menuItems = [
     {
-      menu: 'All Users',
+      menu: 'Inicio',
+      link: 'home',
+    },
+    {
+      menu: 'Todos os Usuarios',
       link: 'alluser',
     },
     {
-      menu: 'CHAT',
+      menu: 'Chat',
       link: '/',
     },
     {
-      menu: 'CONTACT',
+      menu: 'Contato',
       link: '/',
     },
     {
-      menu: 'SETTING',
+      menu: 'Configurações',
       link: '/',
     },
     {
@@ -31,7 +35,7 @@ const NavBar = () => {
       link: '/',
     },
     {
-      menu: 'TERMS OF USE',
+      menu: 'Termos de Uso',
       link: '/',
     },
   ]
@@ -117,7 +121,7 @@ const NavBar = () => {
                   height={20}
                 />
                 {''}
-                <small>{userName || 'Create Account'}</small>
+                <small>{userName || 'Criar Conta'}</small>
               </button>
             )}
           </div>
@@ -137,9 +141,9 @@ const NavBar = () => {
           <Model
             openBox={setOpenModel}
             title=""
-            head="OWN YOUR PRIVACY."
+            head="CUIDE DA SUA PRIVACIDADE."
             info=""
-            smallInfo="Type your Name"
+            smallInfo="Digite seu nome"
             image={images.hero}
             functionName={createAccount}
             address={account}

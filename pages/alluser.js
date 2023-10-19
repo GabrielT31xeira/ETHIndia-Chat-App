@@ -9,7 +9,7 @@ const alluser = () => {
   return (
     <div>
       <div className={Style.alluser_info}>
-        <h1>Find Your Friends </h1>
+        <h1>Encontre seus amigos</h1>
       </div>
 
       <div className={Style.alluser}>

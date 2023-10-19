@@ -26,7 +26,7 @@ const Model = ({
     <div className={Style.Model}>
       <div className={Style.Model_box}>
         <div className={Style.Model_box_left}>
-          <Image src={image} alt="buddy" width={700} height={700} />
+          {/* <Image src={images.main} alt="buddy" width={700} height={700} /> */}
         </div>
         <div className={Style.Model_box_right}>
           <h1>
@@ -40,23 +40,16 @@ const Model = ({
           ) : (
             <div className={Style.Model_box_right_name}>
               <div className={Style.Model_box_right_name_info}>
-                <Image
-                  src={images.username}
-                  alt="user"
-                  width={30}
-                  height={30}
-                />
                 <input
                   type="text"
-                  placeholder="your name"
+                  placeholder="Nome"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className={Style.Model_box_right_name_info}>
-                <Image src={images.account} alt="user" width={30} height={30} />
                 <input
                   type="text"
-                  placeholder={address || "Enter address.."}
+                  placeholder={address || "Endereço"}
                   onChange={(e) => setAccountAddress(e.target.value)}
                 />
               </div>
@@ -64,16 +57,15 @@ const Model = ({
               <div className={Style.Model_box_right_name_btn}>
                 <button onClick={() => functionName({ name, accountAddress })}>
                   {""}
-                  <Image src={images.send} alt="send" width={30} height={30} />
                   {""}
-                  Submit
+                  Enviar
                 </button>
 
                 <button onClick={() => openBox(false)}>
                   {""}
-                  <Image src={images.close} alt="send" width={30} height={30} />
+                  {/* <Image src={images.close} alt="send" width={30} height={30} /> */}
                   {""}
-                  Cancel
+                  Cancelar
                 </button>
               </div>
             </div>

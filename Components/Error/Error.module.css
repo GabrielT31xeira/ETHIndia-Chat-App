@@ -4,14 +4,14 @@
     inset: 30% 30% 45% 30%;
     z-index: 1111111111;
     margin:  0 auto;
-    background-color: #292F3F;
+    background-color: #191E29;
     text-align: center;
     border-radius: 1rem;
     padding: 2rem;
     border-radius: 50px;
-    background: #00d9ff;
+    background: #01C38D;
     box-shadow: 5px 5px 10px #037ccd,
-    -5px -5px 10px #00d9ff
+    -5px -5px 10px #01C38D
 }
 
 @media only screen and (max-width: 35em) {

@@ -18,17 +18,17 @@ const Filter = () => {
         <div className={Style.Filter_box_left}>
           <div className={Style.Filter_box_left_search}>
             <Image src={images.search} alt="image" width={20} height={20} />
-            <input type="text" placeholder="search.." />
+            <input type="text" placeholder="Pesquisar.." />
           </div>
         </div>
         <div className={Style.Filter_box_right}>
           <button>
             <Image src={images.clear} alt="clear" width={20} height={20} />
-            CLEAR CHAT
+            Limpar Conversas
           </button>
           <button onClick={() => setAddFriend(true)}>
             <Image src={images.user} alt="clear" width={20} height={20} />
-            ADD FRIEND
+            Adicionar Usuario
           </button>
         </div>
       </div>
@@ -38,11 +38,11 @@ const Filter = () => {
         <div className={Style.Filter_model}>
           <Model
             openBox={setAddFriend}
-            title="WELCOME TO"
-            head="Chat With Privacy"
+            title="Bem-Vindo ao"
+            head="Site de Denúncias Anônimas do Estado do Tocantins"
             info=""
-            smallInfo="Kindley Select Your Friend Name & Address.."
-            image={images.hero}
+            smallInfo="Viu alguma atitude relacionado ao dinheiro publico? denuncie"
+            // image={images.hero}
             functionName={addFriends}
           />
         </div>

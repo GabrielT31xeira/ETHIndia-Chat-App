@@ -1,18 +1,18 @@
 
 .Model{
-    width: 85%;
+    width: 75%;
     margin: 1rem auto;
 }
 
 .Model_box{
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr;
     align-items:  center;
 }
 
 .Model_box_right h1{
     font-size: 3rem;
-    color: #00d9ff;
+    color: #FFFFFF;
     line-height: .9;
 }
 
@@ -23,7 +23,7 @@
 
 .Model_box_right small{
     font-size: 1.2rem;
-    color: #00d9ff;
+    color: #01C38D;
 }
 
 .Model_box_right_name_info{
@@ -42,7 +42,7 @@
     background-color: transparent;
     outline: none;
     border: none;
-    color: #00d9ff;
+    color: #01C38D;
 }
 
 .Model_box_right_name_btn{
@@ -54,7 +54,7 @@
 .Model_box_right_name_btn button{
     outline: none;
     border: none;
-    color: #00d9ff;
+    color: #01C38D;
     font-size: 1.2rem;
     font-weight: 700;
     text-transform: uppercase;

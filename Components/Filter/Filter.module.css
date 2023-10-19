@@ -17,7 +17,7 @@
     border-radius: 2rem;
     padding-inline: 1rem;
     background-color: rgba(0,0,0,0.25);
-    color: #00d9ff;
+    color: #01C38D;
 }
 
 .Filter_box_left_search input{
@@ -25,7 +25,7 @@
     outline: none;
     border: none;
     padding: 1rem;
-    color: #00d9ff;
+    color: #01C38D;
     width: 20rem;
 }
 
@@ -39,7 +39,7 @@
     outline: none;
     border: none;
     padding: 1rem 2rem;
-    color: #00d9ff;
+    color: #01C38D;
     border-radius: 2rem;
     font-weight: 700;
     display: flex;
@@ -51,7 +51,7 @@
 .Filter_model{
     position: fixed;
     inset: 0 0 0 0;
-    background-color: #292f3f;
+    background-color: #191E29;
     z-index: 2222222222;
 }
 
