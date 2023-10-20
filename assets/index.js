@@ -49,7 +49,6 @@ export default {
   username,
   friends,
   friends2,
-  accountName,
   dot,
   loader,
   image1,

@@ -1,74 +1,66 @@
-import { ethers } from "ethers";
-import Web3Modal from "web3modal";
-
-import { ChatAppAddress, ChatAppABI } from "../Context/constants";
-
 export const ChechIfWalletConnected = async () => {
-  try {
-    if (!window.ethereum) return console.log("Install MateMask");
-
-    const accounts = await window.ethereum.request({
-      method: "eth_accounts",
-    });
-
-    const firstAccount = accounts[0];
-    return firstAccount;
-  } catch (error) {
-    console.log(error);
-  }
+  // Simulando uma conexão offline retornando um valor fictício
+  return '0xYourOfflineWalletAddress';
 };
 
 export const connectWallet = async () => {
-  try {
-    // if (!window.ethereum) return console.log("Install MateMask");
-
-    // const accounts = await window.ethereum.request({
-    //   method: "eth_requestAccounts",
-    // });
-
-    if (!window.ethereum) return console.log("Install MetaMask");
-
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    const firstAccount = accounts[0];
-    return firstAccount;
-  } catch (error) {
-    console.log(error);
-  }
+  // Simulando uma conexão offline retornando um valor fictício
+  return '0xYourOfflineWalletAddress';
 };
 
-const fetchContract = (signerOrProvider) =>
-  new ethers.Contract(ChatAppAddress, ChatAppABI, signerOrProvider);
+// Simulando um contrato offline
+const offlineContract = {
+  getUsername: (address) => 'YourOfflineName',
+  getMyFriendList: () => [],
+  getAllAppUser: () => [],
+  readMessage: (friendAddress) => [],
+  createAccount: (name) => ({ wait: async () => {} }),
+  addFriend: (accountAddress, name) => ({ wait: async () => {} }),
+  sendMessage: (address, msg) => ({ wait: async () => {} }),
+};
 
 export const connectingWithContract = async () => {
-  try {
-    const web3modal = new Web3Modal();
-    const connection = await web3modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
-    const contract = fetchContract(signer);
-    return contract;
-  } catch (error) {
-    console.log(error);
-  }
+  // Simulando uma conexão com contrato offline
+  return offlineContract;
 };
 
-export const converTime = (time) => {
+export const convertTime = (time) => {
+  if (!time || !time.toNumber) {
+    // Retornar um valor fictício para funcionar offline
+    const offlineTime = new Date('2023-10-19T12:00:00');
+    const realTime =
+        offlineTime.getHours() +
+        "/" +
+        offlineTime.getMinutes() +
+        "/" +
+        offlineTime.getSeconds() +
+        "  Date:" +
+        offlineTime.getDate() +
+        "/" +
+        (offlineTime.getMonth() + 1) +
+        "/" +
+        offlineTime.getFullYear();
+    return realTime;
+  }
+
   const newTime = new Date(time.toNumber());
 
+  if (isNaN(newTime)) {
+    return null; // Retorne null ou outro valor apropriado em caso de erro
+  }
+
   const realTime =
-    newTime.getHours() +
-    "/" +
-    newTime.getMinutes() +
-    "/" +
-    newTime.getSeconds() +
-    "  Date:" +
-    newTime.getDate() +
-    "/" +
-    (newTime.getMonth() + 1) +
-    "/" +
-    newTime.getFullYear();
+      newTime.getHours() +
+      "/" +
+      newTime.getMinutes() +
+      "/" +
+      newTime.getSeconds() +
+      "  Date:" +
+      newTime.getDate() +
+      "/" +
+      (newTime.getMonth() + 1) +
+      "/" +
+      newTime.getFullYear();
 
   return realTime;
 };

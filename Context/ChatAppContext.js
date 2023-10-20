@@ -1,148 +1,115 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-
-//INTERNAL IMPORT
-import {
-  ChechIfWalletConnected,
-  connectWallet,
-  connectingWithContract,
-} from '../Utils/apiFeature'
 
 export const ChatAppContect = React.createContext()
 
 export const ChatAppProvider = ({ children }) => {
-  //USESTATE
-  const [account, setAccount] = useState('')
-  const [userName, setUserName] = useState('')
+  // USESTATE
+  const [account, setAccount] = useState('0xYourWalletAddress')
+  const [userName, setUserName] = useState('YourUserName')
   const [friendLists, setFriendLists] = useState([])
   const [friendMsg, setFriendMsg] = useState([])
   const [loading, setLoading] = useState(false)
   const [userLists, setUserLists] = useState([])
   const [error, setError] = useState('')
 
-  //CHAT USER DATA
+  // CHAT USER DATA
   const [currentUserName, setCurrentUserName] = useState('')
   const [currentUserAddress, setCurrentUserAddress] = useState('')
 
-  const router = useRouter()
-
-  //FETCH DATA TIME OF PAGE LOAD
+  // FETCH DATA SIMULADA (substitua por dados reais se necessário)
   const fetchData = async () => {
     try {
-      //GET CONTRACT
-      const contract = await connectingWithContract()
-      //GET ACCOUNT
-      const connectAccount = await connectWallet()
-      setAccount(connectAccount)
-      //GET USER NAME
-      const userName = await contract.getUsername(connectAccount)
-      setUserName(userName)
-      //GET MY FRIEND LIST
-      const friendLists = await contract.getMyFriendList()
-      setFriendLists(friendLists)
-      //GET ALL APP USER LIST
-      const userList = await contract.getAllAppUser()
-      setUserLists(userList)
+      // Simulação de dados fictícios
+      const fakeFriendLists = [{ name: 'Friend1', address: '0xFriend1313123123123123123' }, { name: 'Friend2', address: '0xFriend2' }];
+      setFriendLists(fakeFriendLists);
+
+      const fakeUserList = [{ name: 'User1', address: '0xUser113123123213123123123213123' }, { name: 'User2', address: '0xUser2' }];
+      setUserLists(fakeUserList);
+
     } catch (error) {
-      // setError("Please Install And Connect Your Wallet");
-      console.log(error)
+      setError('Error while fetching data');
+      console.log(error);
     }
   }
+
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  //READ MESSAGE
-  const readMessage = async (friendAddress) => {
-    try {
-      const contract = await connectingWithContract()
-      const read = await contract.readMessage(friendAddress)
-      setFriendMsg(read)
-    } catch (error) {
-      console.log('Currently You Have no Message')
-    }
+  // Função simulada de leitura de mensagem
+  const readMessage = (friendAddress) => {
+    // Simulação de dados fictícios
+    const fakeMessages = [
+      { sender: 'Friend1', message: 'Hello' },
+      { sender: 'You', message: 'Hi there' },
+    ];
+    setFriendMsg(fakeMessages);
   }
 
-  //CREATE ACCOUNT
-  const createAccount = async ({ name, accountAddress }) => {
-    try {
-      // if (name || accountAddress)
-      //   return setError("Name And AccountAddress, cannot be emty");
-
-      const contract = await connectingWithContract()
-      const getCreatedUser = await contract.createAccount(name)
-
-      setLoading(true)
-      await getCreatedUser.wait()
-      setLoading(false)
-      window.location.reload()
-    } catch (error) {
-      setError('Error while creating your account Please reload browser')
-    }
+  // Função simulada para criar uma conta
+  const createAccount = ({ name, accountAddress }) => {
+    // Simulação de dados fictícios
+    setUserName(name);
+    setAccount(accountAddress);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulando um atraso de 2 segundos
   }
 
-  //ADD YOUR FRIENDS
-  const addFriends = async ({ name, accountAddress }) => {
-    try {
-      // if (name || accountAddress) return setError("Please provide data");
-
-      const contract = await connectingWithContract()
-      const addMyFriend = await contract.addFriend(accountAddress, name)
-      setLoading(true)
-      await addMyFriend.wait()
-      setLoading(false)
-      router.push('/')
-      window.location.reload()
-    } catch (error) {
-      setError('Something went wrong while adding friends, try again')
-    }
+  // Função simulada para adicionar amigos
+  const addFriends = ({ name, accountAddress }) => {
+    // Simulação de dados fictícios
+    const newFriend = { name, address: accountAddress };
+    setFriendLists([...friendLists, newFriend]);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      // Redirecionar ou realizar outras ações necessárias
+    }, 2000); // Simulando um atraso de 2 segundos
   }
 
-  //SEND MESSAGE TO YOUR FRIEND
-  const sendMessage = async ({ msg, address }) => {
-    try {
-      // if (msg || address) return setError("Please Type your Message");
-
-      const contract = await connectingWithContract()
-      const addMessage = await contract.sendMessage(address, msg)
-      setLoading(true)
-      await addMessage.wait()
-      setLoading(false)
-      window.location.reload()
-    } catch (error) {
-      setError('Please reload and try again')
-    }
+  // Função simulada para enviar mensagem
+  const sendMessage = ({ msg, address }) => {
+    // Simulação de dados fictícios
+    const newMessage = { sender: 'You', message: msg };
+    const updatedMessages = [...friendMsg, newMessage];
+    setFriendMsg(updatedMessages);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      // Realize outras ações necessárias
+    }, 2000); // Simulando um atraso de 2 segundos
   }
 
-  //READ INFO
-  const readUser = async (userAddress) => {
-    const contract = await connectingWithContract()
-    const userName = await contract.getUsername(userAddress)
-    setCurrentUserName(userName)
-    setCurrentUserAddress(userAddress)
+  // Função simulada para ler informações de usuário
+  const readUser = (userAddress) => {
+    // Simulação de dados fictícios
+    const fakeUserName = 'FictitiousName';
+    setCurrentUserName(fakeUserName);
+    setCurrentUserAddress(userAddress);
   }
+
   return (
-    <ChatAppContect.Provider
-      value={{
-        readMessage,
-        createAccount,
-        addFriends,
-        sendMessage,
-        readUser,
-        connectWallet,
-        ChechIfWalletConnected,
-        account,
-        userName,
-        friendLists,
-        friendMsg,
-        userLists,
-        loading,
-        error,
-        currentUserName,
-        currentUserAddress,
-      }}
-    >
-      {children}
-    </ChatAppContect.Provider>
+      <ChatAppContect.Provider
+          value={{
+            readMessage,
+            createAccount,
+            addFriends,
+            sendMessage,
+            readUser,
+            account,
+            userName,
+            friendLists,
+            friendMsg,
+            userLists,
+            loading,
+            error,
+            currentUserName,
+            currentUserAddress,
+          }}
+      >
+        {children}
+      </ChatAppContect.Provider>
   )
 }
